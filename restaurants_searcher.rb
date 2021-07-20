@@ -1,4 +1,10 @@
 # restaurants_searcher.rb
 
-restaurants = []
-response = "hogahoga"
+def write_data_to_csv()
+    restaurants = []
+    response = "hogahoga"
+    
+    return print restaurants
+end
+
+write_data_to_csv()
