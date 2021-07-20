@@ -1,4 +1,4 @@
 # restaurants_searcher.rb
 
-restaurants = "hogehoeg"
+restaurants = []
 response = "hogahoga"
