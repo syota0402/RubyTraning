@@ -1,8 +1,21 @@
-# restaurants_searcher.rb
+require 'net/http'
+require 'json'
 
-def write_data_to_csv()
+#初期設定
+KEYID = "0fa19af5f5d67db6"
+COUNT = 100
+PREF = "Z011"
+FREEWORD = "渋谷駅" 
+FORMAT = "json"
+PARAMS = {"key": KEYID,"count":COUNT,"large_area":PREF,"keyword":FREEWORD,"format":FREEWORD}
+
+def write_data_to_csv(params)
     restaurants = []
-    response = "hogehoge"
+    uri = URI.parse("http://webservice.recruit.co.jp/hotpepper/gourmet/v1/")
+    uri.query = URI.encode_www_form(PARAMS)  
+    json_res = Net::HTTP.get uri
+    
+    response = JSON.load(json_res)
     
     if response.has_key?("error") then
         puts "エラーが発生しました！"
@@ -12,11 +25,10 @@ def write_data_to_csv()
         restaurants.append(rest_name)
     end
     
-    File.open("restaurants_list.csv","w") do |file|
+    File.open("restaurants_list.csv", "w") do |file|
         file << restaurants
     end
-    
     return puts restaurants
 end
 
-write_data_to_csv()
+write_data_to_csv(PARAMS)
