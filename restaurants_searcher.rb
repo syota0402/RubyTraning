@@ -2,7 +2,11 @@
 
 def write_data_to_csv()
     restaurants = []
-    response = "hogahoga"
+    response = {hogehoge:"hogehoge"}
+    
+    if response.has_key?("error") then
+        puts "エラーが発生しました！"
+    end
     
     return print restaurants
 end
