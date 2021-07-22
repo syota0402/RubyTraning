@@ -7,6 +7,10 @@ def write_data_to_csv()
     if response.has_key?("error") then
         puts "エラーが発生しました！"
     end
+    for restaurant in response["results"]["shop"] do
+        rest_name = restaurant["name"]
+        restaurants.append(rest_name)
+    end
     
     return print restaurants
 end
