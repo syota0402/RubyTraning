@@ -2,7 +2,7 @@
 
 def write_data_to_csv()
     restaurants = []
-    response = {hogehoge:"hogehoge"}
+    response = "hogehoge"
     
     if response.has_key?("error") then
         puts "エラーが発生しました！"
@@ -12,7 +12,11 @@ def write_data_to_csv()
         restaurants.append(rest_name)
     end
     
-    return print restaurants
+    File.open("restaurants_list.csv","w") do |file|
+        file << restaurants
+    end
+    
+    return puts restaurants
 end
 
 write_data_to_csv()
